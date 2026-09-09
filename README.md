@@ -24,3 +24,10 @@ npm run dev
 React 19, TanStack Start, Tailwind v4, Zustand.
 
 Palettes persist in the browser. Export writes an HTML brand book plus CSS tokens, JSON, Markdown, and an SVG strip.
+
+## Parametric machine studies (INGOT-38)
+
+- Route: `/studies/case-ih-695` — Case IH 695 first slice (rigid, hitch Type II, empty `implements[]`).
+- Registry: `src/studies/machines/` — `case-ih-695.ts` builds mesh; `jd-8970.ts` is an **articulated stub** (`buildMesh: false`, hinge API reserved). No JD geometry yet.
+- Doctrine: `parametric-three-study` — dims/profiles/parts → lathe/extrude/box; no GLTF.
+- Tire OD: front 810 mm / rear 1265 mm (`catalog`, Hermes INGOT-38).

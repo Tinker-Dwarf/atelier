@@ -10,33 +10,43 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudiesCaseIh695RouteImport } from './routes/studies/case-ih-695'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudiesCaseIh695Route = StudiesCaseIh695RouteImport.update({
+  id: '/studies/case-ih-695',
+  path: '/studies/case-ih-695',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/studies/case-ih-695': typeof StudiesCaseIh695Route
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/studies/case-ih-695': typeof StudiesCaseIh695Route
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/studies/case-ih-695': typeof StudiesCaseIh695Route
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/studies/case-ih-695'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/studies/case-ih-695'
+  id: '__root__' | '/' | '/studies/case-ih-695'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  StudiesCaseIh695Route: typeof StudiesCaseIh695Route
 }
 
 declare module '@tanstack/react-router' {
@@ -48,21 +58,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/studies/case-ih-695': {
+      id: '/studies/case-ih-695'
+      path: '/studies/case-ih-695'
+      fullPath: '/studies/case-ih-695'
+      preLoaderRoute: typeof StudiesCaseIh695RouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  StudiesCaseIh695Route: StudiesCaseIh695Route,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
