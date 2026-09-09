@@ -6,13 +6,17 @@ export type CabinVariant = "cab" | "rops";
 
 export type PartOp = "lathe" | "extrude" | "box" | "cylinder";
 
-export type UnverifiedDim = {
+export type DimMeta = {
   mm: number;
-  status: "unverified";
+  status: "unverified" | "catalog";
   note: string;
+  source?: string;
 };
 
-export type DimValue = number | UnverifiedDim;
+/** @deprecated use DimMeta */
+export type UnverifiedDim = DimMeta;
+
+export type DimValue = number | DimMeta;
 
 export function dimMm(d: DimValue): number {
   return typeof d === "number" ? d : d.mm;

@@ -39,14 +39,16 @@ export const caseIh695: MachineSpec = {
     height_cab: 2550,
     hp_gross: 72,
     front_tire_od: {
-      mm: 780,
-      status: "unverified",
-      note: "estimate for 7.50-16; not on TractorData — pending Hermes catalog",
+      mm: 810,
+      status: "catalog",
+      note: "7.50-16 Samson R-1S; Astro/Forlander 808–810",
+      source: "INGOT-38 Hermes catalog",
     },
     rear_tire_od: {
-      mm: 1260,
-      status: "unverified",
-      note: "estimate for 14.9-24; not on TractorData — pending Hermes catalog",
+      mm: 1265,
+      status: "catalog",
+      note: "14.9-24 BKT TR-135 (Goodyear 1243 / Firestone ~1260 brand spread — not averaged)",
+      source: "INGOT-38 Hermes catalog",
     },
     front_tire_width: {
       mm: 190,
@@ -76,8 +78,8 @@ export const caseIh695: MachineSpec = {
 };
 
 function buildParts(): PartSpec[] {
-  const frontOd = 780;
-  const rearOd = 1260;
+  const frontOd = 810;
+  const rearOd = 1265;
   const frontW = 190;
   const rearW = 380;
   const frontR = frontOd / 1000 / 2;

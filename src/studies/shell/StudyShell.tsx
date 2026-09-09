@@ -155,7 +155,7 @@ export function StudyShell({ machineId }: Props) {
             Study / {spec.id}
           </span>
           <span className="text-neutral-500">
-            no GLTF · dims mm · tire OD unverified
+            no GLTF · dims mm · tire OD catalog
           </span>
         </div>
         <div
